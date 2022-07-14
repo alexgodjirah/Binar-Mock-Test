@@ -2,6 +2,7 @@ import { Typography } from "@material-ui/core";
 import { Button, Grid, Link } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import CreateForm from "./CreateForm";
 
 export default function Navbar () {
     const [cookie, setCookie, removeCookie] = useCookies(['access_token']);
@@ -12,6 +13,9 @@ export default function Navbar () {
         removeCookie('access_token');
     };
 
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+
     return (
         <>
             <Grid container spacing={3} justifyContent='space-evenly' alignItems='baseline' margin>
@@ -20,7 +24,7 @@ export default function Navbar () {
                 </Grid>
 
                 <Grid item md={5}>
-                    <Button variant='contained'>Create New</Button>
+                    <CreateForm />
                 </Grid>
 
                 <Grid item>

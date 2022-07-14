@@ -1,6 +1,6 @@
-import { Box, Card, CardContent, CardMedia, IconButton, Typography } from "@mui/material";
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import EditForm from './EditForm';
+import DeleteForm from './DeleteForm';
 
 export default function ProductCard (data) {
     return (
@@ -8,13 +8,9 @@ export default function ProductCard (data) {
             <Card sx={{ width: 300, height: 330 }}>
                 <Box>
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end'}} >
-                        <IconButton aria-label='Edit' onClick={() => {console.log('edit')}}>
-                            <ModeEditOutlineOutlinedIcon />
-                        </IconButton>
+                        <EditForm />
 
-                        <IconButton aria-label="Delete" onClick={() => {console.log('delete')}}>
-                            <DeleteOutlineOutlinedIcon />
-                        </IconButton>
+                        <DeleteForm />
                     </Box>
                     <CardMedia 
                         component='img'
