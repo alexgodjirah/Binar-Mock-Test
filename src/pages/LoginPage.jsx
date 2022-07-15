@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Grid, Button, Link, TextField } from "@mui/material";
+import { Card, CardContent, Typography, Grid, Button, Link, TextField, Alert } from "@mui/material";
 import { useFormik } from "formik";
 import { useNavigate }  from 'react-router-dom';
 
@@ -10,12 +10,26 @@ export default function LoginPage () {
             email: '',
             password: ''
         }, 
-        onSubmit: values => {
-            if (values) {
-                console.log(values, 'This is from login');
-                navigate('/dashboard');
-            } else {
-                console.log(`error`);
+        onSubmit: async values => {
+            try {
+                const fetchData = await fetch(
+                    'https://test-binar.herokuapp.com/auth/login',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(values)
+                    }
+                );
+    
+                const response = await fetchData.json();
+                if (response) {
+                    localStorage.setItem('access_token', response.result.access_token);
+                    navigate('/dashboard');
+                }
+            } catch (error) {
+                console.log(error)
             }
         }
     });

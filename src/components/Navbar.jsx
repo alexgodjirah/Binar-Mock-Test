@@ -5,16 +5,14 @@ import { useCookies } from "react-cookie";
 import CreateForm from "./CreateForm";
 
 export default function Navbar () {
-    const [cookie, setCookie, removeCookie] = useCookies(['access_token']);
     // const [isToggle, setIsToggle] = useState(false);
 
     const removeAccessToken = () => {
-        // window.localStorage.clear();
-        removeCookie('access_token');
+        window.localStorage.removeItem('access_token');
     };
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
+    // const [open, setOpen] = useState(false);
+    // const handleOpen = () => setOpen(true);
 
     return (
         <>
@@ -28,7 +26,7 @@ export default function Navbar () {
                 </Grid>
 
                 <Grid item>
-                    <Link>Logout</Link>
+                    <Button onClick={removeAccessToken}>Logout</Button>
                 </Grid>
             </Grid>
         </>

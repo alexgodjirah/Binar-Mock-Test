@@ -11,12 +11,26 @@ export default function RegisterPage () {
             email: '',
             password: ''
         }, 
-        onSubmit: values => {
-            if (values) {
-                console.log(values, 'this is from register');
-                navigate('/');
-            } else {
-                console.log('error')
+        onSubmit: async (values) => {
+            try {
+                const fetchData = await fetch(
+                    `https://test-binar.herokuapp.com/auth/signup`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-ww-form-urlencoded'
+                        },
+                        body: JSON.stringify(values)
+                    }
+                );
+    
+                const response = await fetchData.json();
+    
+                if (response) {
+                    navigate('/');
+                }
+            } catch (error) {
+                console.log(error);
             }
         }
     });

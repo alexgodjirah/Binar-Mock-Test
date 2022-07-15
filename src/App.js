@@ -2,8 +2,6 @@ import { CircularProgress } from '@mui/material';
 import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 import routes from './routes';
 
 function App() {

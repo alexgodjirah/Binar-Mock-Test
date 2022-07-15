@@ -1,8 +1,8 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import EditForm from './EditForm';
 import DeleteForm from './DeleteForm';
 
-export default function ProductCard (data) {
+export default function ProductCard ({data}) {
     return (
         <>
             <Card sx={{ width: 300, height: 330 }}>
@@ -12,13 +12,15 @@ export default function ProductCard (data) {
 
                         <DeleteForm />
                     </Box>
-                    <CardMedia 
-                        component='img'
-                        height='200'
-                        image={data.imageurl}
-                        alt={data.name}
-                    />
-                    
+                    <CardActionArea>
+                        <CardMedia 
+                            component='img'
+                            height='200'
+                            src={data.imageurl}
+                            alt={data.name}
+                        />
+                    </CardActionArea>
+
                     <Box>
                         <CardContent>
                             <Typography variant='h5'>{data.name}</Typography>
