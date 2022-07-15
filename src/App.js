@@ -1,3 +1,5 @@
+import { CircularProgress } from '@mui/material';
+import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import LoginPage from './pages/LoginPage';
@@ -6,15 +8,17 @@ import routes from './routes';
 
 function App() {
   return (
-    <div>
-      <Routes>
-        {
-          routes.map((route, idx) => ( 
-            <Route path={route.path} element={route.element} key={idx} />
-          ))
-        }
-      </Routes>
-    </div>
+    <Suspense fallback={<CircularProgress color='primary' />}>
+      <div>
+        <Routes>
+          {
+            routes.map((route, idx) => ( 
+              <Route path={route.path} element={route.element} key={idx} />
+              ))
+            }
+        </Routes>
+      </div>
+    </Suspense>
   );
 }
 

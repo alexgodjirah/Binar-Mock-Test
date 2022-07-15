@@ -1,9 +1,9 @@
 import { Card, CardContent, Typography, Grid, Button, Link, TextField } from "@mui/material";
 import { useFormik } from "formik";
-// import { useNavigate }  from 'react-router-dom';
+import { useNavigate }  from 'react-router-dom';
 
 export default function LoginPage () {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -11,7 +11,12 @@ export default function LoginPage () {
             password: ''
         }, 
         onSubmit: values => {
-            console.log(values, `this from login`);
+            if (values) {
+                console.log(values, 'This is from login');
+                navigate('/dashboard');
+            } else {
+                console.log(`error`);
+            }
         }
     });
 
@@ -73,7 +78,7 @@ export default function LoginPage () {
 
                     <Grid container marginTop='10px' gap={1} justifyContent='center'>
                         <Typography>Don't have an account?</Typography>
-                        <Link>Register</Link>
+                        <Link href='/register'>Register</Link>
                     </Grid>
                 </Grid>
             </Grid>

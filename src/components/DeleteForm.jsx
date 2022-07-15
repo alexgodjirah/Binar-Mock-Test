@@ -21,7 +21,7 @@ export default function DeleteForm (data) {
     const handleClose = () => setOpen(false);
 
     const handleDelete = () => {
-
+        console.log(data?.id, `is deleted`)
     }
     
     return (
@@ -47,7 +47,7 @@ export default function DeleteForm (data) {
 
                         <Grid item sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2, gap: 2}}>
                             <Button onClick={handleClose}>No</Button>
-                            <Button variant='contained' type='submit'>Yes, delete it</Button>
+                            <Button variant='contained' type='submit' onClick={handleDelete}>Yes, delete it</Button>
                         </Grid>
                     </Box>
                 </Fade>
