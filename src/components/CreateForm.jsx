@@ -17,6 +17,8 @@ const style = {
 export default function CreateForm () {
     const [open, setOpen] = useState(false);
 
+    const token = localStorage.getItem('access_token');
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -24,8 +26,29 @@ export default function CreateForm () {
             price: Number(),
             imageurl: '',
         },
-        onSubmit: values => {
-            console.log(values, `this is from create form`)
+        onSubmit: async (values) => {
+            try {
+                const fetchData = await fetch(
+                    `https://test-binar.herokuapp.com/v1/products/`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': token
+                        },
+                        body: JSON.stringify(values)
+                    }
+                );
+
+                const response = await fetchData.json();
+                
+                if (response) {
+                    setOpen(false);
+                    window.location.reload();
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
     })
 
@@ -115,7 +138,7 @@ export default function CreateForm () {
 
                             <Grid item sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2, gap: 2}}>
                                 <Button onClick={handleClose}>Back</Button>
-                                <Button variant='contained' type='submit' onClick={handleClose}>Create</Button>
+                                <Button variant='contained' type='submit'>Create</Button>
                             </Grid>
 
                         </form>

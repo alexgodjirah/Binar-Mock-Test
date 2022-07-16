@@ -2,13 +2,15 @@ import { Typography } from "@material-ui/core";
 import { Button, Grid, Link } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 import CreateForm from "./CreateForm";
 
 export default function Navbar () {
-    // const [isToggle, setIsToggle] = useState(false);
+    const navigate = useNavigate();
 
     const removeAccessToken = () => {
         window.localStorage.removeItem('access_token');
+        navigate('/')
     };
 
     // const [open, setOpen] = useState(false);
