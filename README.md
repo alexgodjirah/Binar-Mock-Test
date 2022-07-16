@@ -1,6 +1,6 @@
 # Binar Mock Technical Test
 
-## Application Configuratio
+## Application Configuration
 1. Clone this repository: `git clone https://github.com/alexgodjirah/binar-mock-test.git`
 2. Install the used packages using command: `yarn`
 3. Start the application using command: `yarn start`
@@ -65,3 +65,10 @@ This pop-up component will be used to update the existing item. To update/edit e
 This pop-up ciomponent will be used to delete the existing item. TO delete existing item, clik the delete icon (trash bin icon) above each item, then click the `Yes, delete it` button. The item will be deleted from the page.
 
 <img src='./public/DeleteItem.png'>
+
+<br>
+<br>
+
+## API Documentation Flaw:
+There are no error hadlers.
+I think there is an error where access to fetch in blocked by CORS policy because `Access-Control-Allow-Origin` header is not presented on the requested resource.
