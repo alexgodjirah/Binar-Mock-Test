@@ -14,14 +14,37 @@ const style = {
     p: 4
 };
 
-export default function DeleteForm (data) {
+export default function DeleteForm ({data}) {
+    // console.log(data.id)
     const [open, setOpen] = useState(false);
+
+    const token = localStorage.getItem('access_token')
     
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleDelete = () => {
-        console.log(data?.id, `is deleted`)
+    const handleDelete = async () => {
+        try {
+            const fetchData = await fetch(
+                `https://test-binar.herokuapp.com/v1/products/${data.id}`,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': token,
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            const response = await fetchData.json();
+            
+            if (response) {
+                setOpen(false);
+                window.location.reload();
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
     
     return (

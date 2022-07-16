@@ -1,6 +1,7 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import EditForm from './EditForm';
 import DeleteForm from './DeleteForm';
+import { useState } from "react";
 
 export default function ProductCard ({data}) {
     return (
@@ -8,9 +9,9 @@ export default function ProductCard ({data}) {
             <Card sx={{ width: 300, height: 330 }}>
                 <Box>
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end'}} >
-                        <EditForm />
+                        <EditForm data={data} />
 
-                        <DeleteForm />
+                        <DeleteForm data={data} />
                     </Box>
                     <CardActionArea>
                         <CardMedia 

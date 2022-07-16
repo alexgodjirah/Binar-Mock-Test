@@ -15,22 +15,44 @@ const style = {
     p: 4
 };
 
-export default function EditForm (data) {
+export default function EditForm ({data}) {
     const [open, setOpen] = useState(false);
 
-    const formik = useFormik({
-        initialValues: {
-            name: data?.name,
-            price: data?.price,
-            imageurl: data?.imageurl,
-        },
-        onSubmit: values => {
-            console.log(values, `this is from edit form`)
-        }
-    })
+    const token = localStorage.getItem('access_token');
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const formik = useFormik({
+        initialValues: {
+            name: data.name,
+            price: data.price,
+            imageurl: data.imageurl,
+        },
+        onSubmit: async (values) => {
+            try {
+                const fetchData = await fetch(
+                    `https://test-binar.herokuapp.com/v1/products/${data.id}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': token
+                        },
+                        body: JSON.stringify(values)
+                    }
+                );
+
+                const response = await fetchData.json();
+                if (response) {
+                    handleClose();
+                    window.location.reload();
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    })
 
     return (
         <>

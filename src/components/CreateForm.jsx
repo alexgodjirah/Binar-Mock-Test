@@ -19,6 +19,12 @@ export default function CreateForm () {
 
     const token = localStorage.getItem('access_token');
 
+    const handleOpen = () => {
+        setOpen(true);
+        formik.resetForm();
+    };
+    const handleClose = () => setOpen(false);
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -43,7 +49,7 @@ export default function CreateForm () {
                 const response = await fetchData.json();
                 
                 if (response) {
-                    setOpen(false);
+                    handleClose();
                     window.location.reload();
                 }
             } catch (error) {
@@ -51,12 +57,6 @@ export default function CreateForm () {
             }
         }
     })
-
-    const handleOpen = () => {
-        setOpen(true);
-        formik.resetForm();
-    };
-    const handleClose = () => setOpen(false);
 
     return (
         <>
