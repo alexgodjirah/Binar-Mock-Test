@@ -18,7 +18,7 @@ export default function Navbar () {
 
     return (
         <>
-            <Grid container spacing={3} justifyContent='space-evenly' alignItems='baseline' margin>
+            <Grid container spacing={3} justifyContent='space-evenly' alignItems='center' margin>
                 <Grid item md={2}>
                     <Typography variant='h5'>Product List</Typography>
                 </Grid>
