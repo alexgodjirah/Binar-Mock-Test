@@ -1,0 +1,56 @@
+nav {
+    display: grid;
+
+    grid-template-columns: 25% 50% 25%;
+
+    align-items: center;
+    justify-items: center;
+}
+
+#createNew {
+    justify-self: start;
+
+    width: 100px;
+    height: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#logout {
+    cursor: pointer;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    
+    display: grid;
+    /* justify-content: center; */
+    grid-template-columns: repeat(3, auto);
+}
+
+.card {
+    min-width: 100px;
+    min-height: 100px;
+    
+    max-width: 300px;
+    max-height: 350px;
+    
+    border: 1px solid black;
+
+    justify-self: center;
+} 
+
+.icon {
+    height: 20px;
+}
+
+.icon {
+    display: flex;    
+    justify-content: end;
+    gap: 10px;
+    margin-right: 10px;
+}
+
