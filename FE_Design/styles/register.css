@@ -1,0 +1,31 @@
+#container {
+    display: grid;
+
+    justify-items: center;
+}
+
+#registerForm {
+    display: grid;
+
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgb(94, 94, 94);
+    box-shadow: 0 2px 1px 1px rgb(116, 116, 116);
+
+    justify-content: center;
+    align-content: center;
+}
+
+#nameForm, #emailForm, #passwordForm {
+    display: grid;
+
+    width: 200px;
+    height: 50px;
+
+    justify-self: center;
+}
+
+#registerButton {
+    margin-top: 5px;
+    width: 200px;
+}
